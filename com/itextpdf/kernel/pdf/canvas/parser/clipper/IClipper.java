@@ -1,0 +1,68 @@
+/*    */ package com.itextpdf.kernel.pdf.canvas.parser.clipper;
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ public interface IClipper
+/*    */ {
+/*    */   public static final int REVERSE_SOLUTION = 1;
+/*    */   public static final int STRICTLY_SIMPLE = 2;
+/*    */   public static final int PRESERVE_COLINEAR = 4;
+/*    */   
+/*    */   boolean addPath(Path paramPath, PolyType paramPolyType, boolean paramBoolean);
+/*    */   
+/*    */   boolean addPaths(Paths paramPaths, PolyType paramPolyType, boolean paramBoolean);
+/*    */   
+/*    */   void clear();
+/*    */   
+/*    */   boolean execute(ClipType paramClipType, Paths paramPaths);
+/*    */   
+/*    */   boolean execute(ClipType paramClipType, Paths paramPaths, PolyFillType paramPolyFillType1, PolyFillType paramPolyFillType2);
+/*    */   
+/*    */   boolean execute(ClipType paramClipType, PolyTree paramPolyTree);
+/*    */   
+/*    */   boolean execute(ClipType paramClipType, PolyTree paramPolyTree, PolyFillType paramPolyFillType1, PolyFillType paramPolyFillType2);
+/*    */   
+/*    */   public enum ClipType
+/*    */   {
+/* 36 */     INTERSECTION, UNION, DIFFERENCE, XOR;
+/*    */   }
+/*    */   
+/*    */   public enum Direction {
+/* 40 */     RIGHT_TO_LEFT, LEFT_TO_RIGHT;
+/*    */   }
+/*    */   
+/*    */   public enum EndType {
+/* 44 */     CLOSED_POLYGON, CLOSED_LINE, OPEN_BUTT, OPEN_SQUARE, OPEN_ROUND;
+/*    */   }
+/*    */   
+/*    */   public enum JoinType {
+/* 48 */     BEVEL, ROUND, MITER;
+/*    */   }
+/*    */   
+/*    */   public enum PolyFillType {
+/* 52 */     EVEN_ODD, NON_ZERO, POSITIVE, NEGATIVE;
+/*    */   }
+/*    */   
+/*    */   public enum PolyType {
+/* 56 */     SUBJECT, CLIP;
+/*    */   }
+/*    */   
+/*    */   public static interface IZFillCallback {
+/*    */     void zFill(Point.LongPoint param1LongPoint1, Point.LongPoint param1LongPoint2, Point.LongPoint param1LongPoint3, Point.LongPoint param1LongPoint4, Point.LongPoint param1LongPoint5);
+/*    */   }
+/*    */ }
+
+
+/* Location:              /Users/shanelupton/Downloads/Feeder-main/Parts Generator.jar!/com/itextpdf/kernel/pdf/canvas/parser/clipper/IClipper.class
+ * Java compiler version: 7 (51.0)
+ * JD-Core Version:       1.1.3
+ */
