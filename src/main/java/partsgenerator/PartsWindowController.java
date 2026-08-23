@@ -19,7 +19,6 @@
 /*      */ import java.util.zip.ZipEntry;
 /*      */ import java.util.zip.ZipOutputStream;
 /*      */ import javafx.application.Platform;
-/*      */ import javafx.beans.value.ObservableValue;
 /*      */ import javafx.concurrent.Task;
 /*      */ import javafx.event.ActionEvent;
 /*      */ import javafx.event.Event;
@@ -342,9 +341,35 @@
 /*      */   private RadioButton horizontalSquarePostRadioButton;
 /*      */   @FXML
 /*      */   private CheckBox app300BrassCheckBox;
+
+            private Path getApplicationFolder() {
+                try {
+                    Path jarPath = Paths.get(
+                        Main.class.getProtectionDomain()
+                            .getCodeSource()
+                            .getLocation()
+                            .toURI()
+                    );
+
+                    // Development: target/classes
+                    // Packaged app: Parts Generator.app/Contents/app
+                    Path folder = Files.isRegularFile(jarPath)
+                        ? jarPath.getParent()
+                        : jarPath;
+
+                    Path appBundle = folder
+                        .getParent() // Contents
+                        .getParent(); // Parts Generator.app
+
+                    return appBundle.getParent().toAbsolutePath().normalize();
+                } catch (Exception e) {
+                    return Paths.get(System.getProperty("user.home"))
+                        .toAbsolutePath().normalize();
+                }
+            }
 /*      */   
 /*      */   public void initialize(URL url, ResourceBundle rb) {
-/*  342 */     this.projectPathTextField.setText(getProjectPath());
+/*  342 */     this.projectPathTextField.setText(getApplicationFolder().toString());
 /*  343 */     this.openSCADPathTextField.setText(getOpenSCADpath());
 /*  344 */     this.tempOpenSCADPath = getOpenSCADfile();
 /*      */ 
