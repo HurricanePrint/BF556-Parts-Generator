@@ -67,7 +67,7 @@
                     <archive>
                         <manifest>
                             <!-- Points to your wrapper main class bypassing OpenJFX blocks -->
-                            <mainClass>partsgenerator.MainLauncher</mainClass>
+                            <mainClass>partsgenerator.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -90,7 +90,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>partsgenerator.MainLauncher</mainClass>
+                    <mainClass>partsgenerator.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
