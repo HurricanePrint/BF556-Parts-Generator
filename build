@@ -7,25 +7,6 @@ PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
 APP_NAME="Parts Generator"
 OS="$(uname -s)"
 
-case "$OS" in
-  Darwin)
-    PACKAGE_TYPE="app-image"
-    ;;
-
-  MINGW*|MSYS*|CYGWIN*)
-    PACKAGE_TYPE="exe"
-    ;;
-
-  Linux)
-    PACKAGE_TYPE="deb"
-    ;;
-
-  *)
-    echo "Unsupported platform: $OS"
-    exit 1
-    ;;
-esac
-
 cd "$PROJECT_DIR"
 
 rm -rf target/app dist
@@ -48,7 +29,7 @@ cp "$MAIN_JAR" target/app/
 MAIN_JAR_NAME="$(basename "$MAIN_JAR")"
 
 jpackage \
-  --type "$PACKAGE_TYPE" \
+  --type "app-image" \
   --name "$APP_NAME" \
   --input target/app \
   --main-jar "$MAIN_JAR_NAME" \
@@ -57,5 +38,7 @@ jpackage \
   --add-modules javafx.controls,javafx.fxml,javafx.media \
   --dest dist \
   --java-options "--enable-native-access=javafx.graphics,javafx.media"
+
+rm -rf target
 
 echo "Build complete for $OS: dist/"

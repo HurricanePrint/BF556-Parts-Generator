@@ -7,8 +7,7 @@ This repository contains the source code for the Parts Generator application inc
 - JDK 25
 - Maven
 - JavaFX dependencies configured in `pom.xml`
-- OpenSCAD, if required by the project
-- `jpackage` for standalone application builds
+- Git Bash (windows)
 
 ## Run from Source
 
