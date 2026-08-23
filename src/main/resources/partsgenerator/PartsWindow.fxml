@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="partsgenerator.PartsWindowController">
+   <children>
+      <TabPane prefHeight="803.0" prefWidth="849.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Project Generator">
+               <content>
+                  <AnchorPane prefHeight="505.0" prefWidth="991.0">
+                     <children>
+                        <VBox prefHeight="505.0" prefWidth="950.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox prefHeight="70.0" prefWidth="950.0">
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="70.0" prefWidth="867.0" text="Project Location">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="42.0" prefWidth="622.0">
+                                             <children>
+                                                <HBox layoutY="7.0" prefHeight="42.0" prefWidth="613.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <TextField fx:id="projectPathTextField" prefHeight="25.0" prefWidth="775.0" />
+                                                      <Button fx:id="projectPathChangeButton" mnemonicParsing="false" onAction="#getNewFolderPath" prefHeight="25.0" prefWidth="70.0" text="Change" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </TitledPane>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="134.0" prefWidth="910.0" spacing="10.0">
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="150.0" prefWidth="193.0" text="Main Body">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="294.0">
+                                             <children>
+                                                <GridPane layoutX="19.6" layoutY="19.6" prefHeight="124.0" prefWidth="196.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="88.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="72.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <RadioButton fx:id="etzgmp38RadioButton" mnemonicParsing="false" text="ETZGMP38">
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="motorToggleGroup" />
+                                                         </toggleGroup>
+                                                      </RadioButton>
+                                                      <RadioButton fx:id="fc555RadioButton" mnemonicParsing="false" text="FC555" toggleGroup="$motorToggleGroup" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="wallExtenderCheckBox" mnemonicParsing="false" text="Extender" textFill="#0022ff" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <tooltip>
+                                                            <Tooltip text="Select if you want to increase your collator capacity" />
+                                                         </tooltip>
+                                                      </CheckBox>
+                                                      <RadioButton fx:id="jgy370RadioButton" mnemonicParsing="false" text="JGY370" toggleGroup="$motorToggleGroup" GridPane.rowIndex="1" />
+                                                      <RadioButton fx:id="m634jsRadioButton" mnemonicParsing="false" text="M634JS" toggleGroup="$motorToggleGroup" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="slidePlateLatchCheckBox" mnemonicParsing="false" text="Latch" textFill="#0022ff" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <tooltip>
+                                                            <Tooltip text="Select if you want a latch to secure your slide plate" />
+                                                         </tooltip>
+                                                      </CheckBox>
+                                                      <CheckBox fx:id="mongoCheckBox" mnemonicParsing="false" text="MONGO" textFill="#0022ff" underline="true" GridPane.columnIndex="1">
+                                                         <tooltip>
+                                                            <Tooltip text="Select if you want the MONGO sized collator" />
+                                                         </tooltip>
+                                                      </CheckBox>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="141.0" prefWidth="115.0" text="Mount">
+                                      <content>
+                                        <AnchorPane prefHeight="122.0" prefWidth="113.0">
+                                             <children>
+                                                <GridPane layoutX="-16.0" layoutY="23.0" prefHeight="180.0" prefWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <RadioButton fx:id="dillonRadioButton" mnemonicParsing="false" text="Dillon">
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="mountToggleGroup" />
+                                                         </toggleGroup>
+                                                      </RadioButton>
+                                                      <RadioButton fx:id="verticalCircularPostRadioButton" mnemonicParsing="false" text="Ver. Post ⃝" textFill="#0022ff" toggleGroup="$mountToggleGroup" underline="true" GridPane.rowIndex="1">
+                                                         <tooltip>
+                                                            <Tooltip text="Select this for vertical mounting onto a circular post" />
+                                                         </tooltip></RadioButton>
+                                                      <RadioButton fx:id="verticalSquarePostRadioButton" mnemonicParsing="false" text="Ver. Post ⃞" textFill="#0022ff" toggleGroup="$mountToggleGroup" underline="true" GridPane.rowIndex="2">
+                                                         <tooltip>
+                                                            <Tooltip text="Select this for vertical mounting onto a square post" />
+                                                         </tooltip></RadioButton>
+                                                      <RadioButton fx:id="horizontalSquarePostRadioButton" mnemonicParsing="false" text="Hor. Post  ⃞" textFill="#0022ff" toggleGroup="$mountToggleGroup" underline="true" GridPane.rowIndex="3">
+                                                         <tooltip>
+                                                            <Tooltip text="Select this for horizontal mounting onto a square post" />
+                                                         </tooltip></RadioButton>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="120.0" prefWidth="90.0" text="Electronics Box">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="114.0">
+                                             <children>
+                                                <GridPane layoutX="19.6" layoutY="19.6" prefHeight="180.0" prefWidth="187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <RadioButton fx:id="smallElectronicsRadioButton" mnemonicParsing="false" text="Small">
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="electronicsToggleGroup" />
+                                                         </toggleGroup>
+                                                      </RadioButton>
+                                                      <RadioButton fx:id="largeElectronicsRadioButton" mnemonicParsing="false" text="Large" toggleGroup="$electronicsToggleGroup" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="templateCheckBox" mnemonicParsing="false" text="Template" textFill="#0022ff" underline="true" GridPane.rowIndex="2">
+                                                         <tooltip>
+                                                            <Tooltip text="Select if you want a blank electronics box to modify" />
+                                                         </tooltip>
+                                                      </CheckBox>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="134.0" prefWidth="125.0" text="Sensor">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <GridPane layoutX="19.6" layoutY="19.6" prefHeight="180.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <RadioButton fx:id="switchRadioButton" mnemonicParsing="false" text="Switch">
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="sensorToggleGroup" />
+                                                         </toggleGroup>
+                                                      </RadioButton>
+                                                      <RadioButton fx:id="photosensorRadioButton" mnemonicParsing="false" text="Photosensor" toggleGroup="$sensorToggleGroup" GridPane.rowIndex="1" />
+                                                      <RadioButton fx:id="proximityRadioButton" mnemonicParsing="false" text="Proximity" toggleGroup="$sensorToggleGroup" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="collatorSensorCheckBox" mnemonicParsing="false" text="Collator Mount" textFill="#0022ff" underline="true" GridPane.rowIndex="3">
+                                                         <tooltip>
+                                                            <Tooltip text="Select if you want to mount your sensors directly below your collator unit" />
+                                                         </tooltip>
+                                                      </CheckBox>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane collapsible="false" prefHeight="150.0" prefWidth="119.0" text="Collator Plates">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <content>
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <CheckBox fx:id="collatorHandleCheckBox" mnemonicParsing="false" text="Plate Handle" textFill="#0022ff" underline="true" GridPane.rowIndex="3">
+                                                   <tooltip>
+                                                      <Tooltip text="Select if you want a collator plate handle" />
+                                                   </tooltip>
+                                                </CheckBox>
+                                                <CheckBox fx:id="clutchCoverCheckBox" mnemonicParsing="false" text="Clutch Cover" textFill="#0022ff" underline="true" GridPane.rowIndex="2">
+                                                   <tooltip>
+                                                      <Tooltip text="Select if you want a slip clutch cover" />
+                                                   </tooltip>
+                                                </CheckBox>
+                                                <RadioButton fx:id="pinnedShaftRadioButton" mnemonicParsing="false" text="Pinned Shaft">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="shaftToggleGroup" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="hexCouplerRadioButton" mnemonicParsing="false" text="Hex Coupler" toggleGroup="$shaftToggleGroup" GridPane.rowIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="134.0" prefWidth="150.0" text="Spring Tube OD/ID (mm)">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="162.0" prefWidth="207.0">
+                                             <children>
+                                                <GridPane layoutX="-25.0" prefHeight="124.0" prefWidth="192.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <CheckBox fx:id="adapter7" mnemonicParsing="false" text="9.5/7" />
+                                                      <CheckBox fx:id="adapter8" mnemonicParsing="false" text="10.5/8" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="adapter9" mnemonicParsing="false" text="11.5/9" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="adapter10" mnemonicParsing="false" text="12.5/10" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="adapter11" mnemonicParsing="false" text="13.5/11" GridPane.columnIndex="1" />
+                                                      <CheckBox fx:id="adapter12" mnemonicParsing="false" text="14.5/12" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="adapter13" mnemonicParsing="false" text="15.5/13" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="adapter14" mnemonicParsing="false" text="16.5/14" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="211.0" prefWidth="849.0" spacing="10.0">
+                                 <children>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="200.0" prefWidth="130.0" text="Brass Orientation">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="88.0" prefWidth="91.0">
+                                             <children>
+                                                <GridPane layoutX="19.6" layoutY="19.6" prefHeight="148.0" prefWidth="114.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="48.0" minWidth="10.0" prefWidth="28.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="56.0" minWidth="10.0" prefWidth="24.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="71.0" minWidth="10.0" prefWidth="44.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <CheckBox fx:id="baseUp9CheckBox" mnemonicParsing="false" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="baseUp40CheckBox" mnemonicParsing="false" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="baseUp45CheckBox" mnemonicParsing="false" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="baseDown9CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="baseDown40CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="baseDown45CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="baseDown223CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <CheckBox fx:id="baseDown300CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                      <CheckBox fx:id="baseDown308CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                      <Label text="9mm" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                      <Label text=".40 S&amp;W" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                      <Label text=".45 ACP" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                      <Label text=".223" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                      <Label text="300 BLK" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                                      <Label text=".308" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                                      <Label text="↑" textFill="#0022ff" underline="true">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                         <tooltip>
+                                                            <Tooltip text="Brass Base Up" />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <Label text="↓" textFill="#0022ff" underline="true" GridPane.columnIndex="1">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                         <tooltip>
+                                                            <Tooltip text="Brass Base Down" />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <CheckBox fx:id="baseDown57CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <Label text="FN 5.7" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="200.0" prefWidth="130.0" text="Bullet Orientation">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="133.0">
+                                             <children>
+                                                <GridPane layoutX="7.0" prefHeight="148.0" prefWidth="123.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="66.0" minWidth="10.0" prefWidth="34.00000190734863" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="54.00000190734863" minWidth="10.0" prefWidth="29.999998092651367" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="51.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <CheckBox fx:id="noseUp9CheckBox" mnemonicParsing="false" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="noseUp40CheckBox" mnemonicParsing="false" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="noseUp45CheckBox" mnemonicParsing="false" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="noseUp223CheckBox" mnemonicParsing="false" GridPane.rowIndex="4" />
+                                                      <CheckBox fx:id="noseUp308CheckBox" mnemonicParsing="false" GridPane.rowIndex="6" />
+                                                      <CheckBox fx:id="noseUp300CheckBox" mnemonicParsing="false" GridPane.rowIndex="5" />
+                                                      <CheckBox fx:id="noseDown9CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="noseDown40CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="noseDown45CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="noseDown223CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <CheckBox fx:id="noseDown300CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <CheckBox fx:id="noseDown308CheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                      <Label text="9mm" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                      <Label text=".40 S&amp;W" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                      <Label text=".45 ACP" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                      <Label text=".223" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                                      <Label text="300 BLK" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                      <Label text=".308" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                                      <Label text="↑" textFill="#0022ff" underline="true">
+                                                         <font>
+                                                            <Font size="20.0" />
+                                                         </font>
+                                                         <tooltip>
+                                                            <Tooltip text="Bullet Nose Up" />
+                                                         </tooltip>
+                                                      </Label>
+                                                      <Label text="↓" textFill="#0022ff" underline="true" GridPane.columnIndex="1">
+                                                         <font>
+                                                            <Font size="20.0" />
+                                                         </font>
+                                                         <tooltip>
+                                                            <Tooltip text="Bullet Nose Down" />
+                                                         </tooltip>
+                                                      </Label>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="200.0" prefWidth="180.0" text="Bullet Feed Dies">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="107.0">
+                                             <children>
+                                                <GridPane layoutX="57.0" layoutY="-31.0" prefHeight="164.0" prefWidth="107.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <CheckBox fx:id="bulletFeedDie9CheckBox" mnemonicParsing="false" text="9mm" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="bulletFeedDie32CheckBox" mnemonicParsing="false" text=".32 ACP" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="bulletFeedDie40CheckBox" mnemonicParsing="false" text=".40 S&amp;W" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="bulletFeedDie45CheckBox" mnemonicParsing="false" text=".45 ACP" GridPane.rowIndex="5" />
+                                                      <CheckBox fx:id="bulletFeedDie223CheckBox" mnemonicParsing="false" text=".223" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="bulletFeedDie308CheckBox" mnemonicParsing="false" text=".308" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <CheckBox fx:id="bulletFeedDie7CheckBox" mnemonicParsing="false" text="7mm" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="bulletFeedDie44CheckBox" mnemonicParsing="false" text=".44 Mag" GridPane.rowIndex="4" />
+                                                      <CheckBox fx:id="bulletFeedDie300CheckBox" mnemonicParsing="false" text="300 BLK" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="bulletFeedDie4570CheckBox" mnemonicParsing="false" text=".45-70" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <Label text="Pistol">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Rifle" GridPane.columnIndex="1">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                    <TitledPane animated="false" collapsible="false" prefHeight="200.0" prefWidth="396.0" text="APP Parts">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <GridPane layoutX="-14.0" layoutY="-13.0" prefHeight="161.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <CheckBox fx:id="app9BulletCheckBox" mnemonicParsing="false" text="9mm" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="app45BulletCheckBox" mnemonicParsing="false" text=".45 ACP" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                                      <CheckBox fx:id="app32BulletCheckBox" mnemonicParsing="false" text=".32 ACP" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="app223BulletCheckBox" mnemonicParsing="false" text=".223" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="app40BulletCheckBox" mnemonicParsing="false" text=".40 S&amp;W" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="app308BulletCheckBox" mnemonicParsing="false" text=".308" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="app9BrassCheckBox" mnemonicParsing="false" text="9mm" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="app32BrassCheckBox" mnemonicParsing="false" text=".32 ACP" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="app40BrassCheckBox" mnemonicParsing="false" text=".40 S&amp;W" GridPane.rowIndex="4" />
+                                                      <CheckBox fx:id="app45BrassCheckBox" mnemonicParsing="false" text=".45 ACP" GridPane.rowIndex="6" />
+                                                      <CheckBox fx:id="app223BrassCheckBox" mnemonicParsing="false" text=".223" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <CheckBox fx:id="app308BrassCheckBox" mnemonicParsing="false" text=".308" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                      <Label text="Pistol Brass">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Pistol Bullets" GridPane.columnIndex="2">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <CheckBox fx:id="app44BrassCheckBox" mnemonicParsing="false" text=".44 Mag" GridPane.rowIndex="5" />
+                                                      <CheckBox fx:id="app357BrassCheckBox" mnemonicParsing="false" text=".357 Mag" GridPane.rowIndex="3" />
+                                                      <CheckBox fx:id="app57BrassCheckBox" mnemonicParsing="false" text="FN 5.7" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <CheckBox fx:id="app65BrassCheckBox" mnemonicParsing="false" text="6.5 CM" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CheckBox fx:id="app270BrassCheckBox" mnemonicParsing="false" text=".270" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <CheckBox fx:id="app300BrassCheckBox" mnemonicParsing="false" text=".300 BLK" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                      <CheckBox fx:id="app762BrassCheckBox" mnemonicParsing="false" text="7.62x39mm" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <Label text="Rifle Brass" GridPane.columnIndex="1">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label text="Rifle Bullets" GridPane.columnIndex="3">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </TitledPane>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <ProgressBar fx:id="partsProgressBar" prefHeight="18.0" prefWidth="374.0" progress="0.0">
+                                       <HBox.margin>
+                                          <Insets top="5.0" />
+                                       </HBox.margin>
+                                    </ProgressBar>
+                                    <Button fx:id="zipStartButton" mnemonicParsing="false" onAction="#getZIPFile" prefHeight="25.0" prefWidth="58.0" text="Start" />
+                                    <Label fx:id="progressLabel" prefHeight="24.0" prefWidth="372.0" text="Select your parts and click Start to get your parts ZIP file" textFill="#d31313">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Collator Plate Generator">
+               <content>
+                  <AnchorPane prefHeight="771.0" prefWidth="992.0">
+                     <children>
+                        <TitledPane animated="false" collapsible="false" layoutX="8.0" layoutY="87.0" prefHeight="392.0" prefWidth="633.0" text="Collator Plate Settings">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="571.0">
+                                 <children>
+                                    <VBox prefHeight="366.0" prefWidth="562.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="641.0">
+                                             <children>
+                                                <Label prefHeight="17.0" prefWidth="97.0" text="description">
+                                                   <padding>
+                                                      <Insets left="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextField fx:id="descriptionTextField" prefHeight="25.0" prefWidth="515.0">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font></TextField>
+                                             </children>
+                                          </HBox>
+                                          <GridPane prefHeight="326.0" prefWidth="547.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="caliber" />
+                                                <Label text="addBevel" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                                <Label text="collator_plate_h" GridPane.rowIndex="1" />
+                                                <Label text="isLongRifleBullet" GridPane.rowIndex="2" />
+                                                <Label text="addRamps" GridPane.rowIndex="3" />
+                                                <Label text="isRifleBrassPlate" GridPane.rowIndex="4" />
+                                                <Label text="rifleHoleWidth" GridPane.rowIndex="5" />
+                                                <Label text="addPivots" GridPane.rowIndex="6" />
+                                                <Label text="ridgeCenter" GridPane.columnIndex="2" />
+                                                <Label text="ridgeHeight" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label text="ridgeLength" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <Label text="ridgeAlternate" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label text="addRidges" GridPane.rowIndex="8" />
+                                                <Label text="addSlides" GridPane.rowIndex="7" />
+                                                <Label text="bevelSize" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                <Label text="hole_multiplier" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                                <Label text="useClutch" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                                <Label text="useHex" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                                                <Label text="addHexHandle" GridPane.columnIndex="4" />
+                                                <Label text="hxw" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                                <Label text="shaft_hole" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                                <Label text="shaft_slot_length" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                                                <Label text="shaft_slot_width" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                                                <Label text="collator_plate_d" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                                                <Label text="bullet_caliber" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                                                <Spinner fx:id="caliberSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="1" />
+                                                <Spinner fx:id="plateHeightSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Spinner fx:id="rifleHoleWidthSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Spinner fx:id="ridgeHeightSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <Spinner fx:id="ridgeLengthSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Spinner fx:id="bevelSizeSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                <Spinner fx:id="holeMultiplierSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                                <Spinner fx:id="hxwSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                                <Spinner fx:id="shaftHoleSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                                <Spinner fx:id="shaftSlotLengthSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                                <Spinner fx:id="shaftSlotWidthSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                                <Spinner fx:id="fnSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                                                <Spinner fx:id="plateDiameterSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                                                <Spinner fx:id="bulletCaliberSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                                                <Label text="\$fn" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                                                <CheckBox fx:id="isLongRifleBulletCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <CheckBox fx:id="addRampsCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <CheckBox fx:id="isRifleBrassCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <CheckBox fx:id="addPivotsCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <CheckBox fx:id="addSlidesCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <CheckBox fx:id="addRidgesCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <CheckBox fx:id="ridgeCenterCheckBox" mnemonicParsing="false" GridPane.columnIndex="3" />
+                                                <CheckBox fx:id="ridgeAlternateCheckBox" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <CheckBox fx:id="addBevelCheckBox" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <CheckBox fx:id="useClutchCheckBox" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <CheckBox fx:id="useHexCheckBox" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                                                <CheckBox fx:id="addHexHandleCheckBox" mnemonicParsing="false" GridPane.columnIndex="5" />
+                                                <Label text="hexHandleHeight" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                <Spinner fx:id="hexHandleHeightSpinner" editable="true" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" layoutX="651.0" layoutY="137.0" prefHeight="245.0" prefWidth="210.0" text="Calibers">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="107.0" prefWidth="113.0">
+                                 <children>
+                                    <GridPane alignment="CENTER" layoutX="19.6" layoutY="19.6" prefHeight="281.0" prefWidth="228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.99999237060547" minWidth="10.0" prefWidth="97.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="91.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <RadioButton fx:id="caliber9RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" selected="true" text="9mm">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="caliberToggleGroup" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="caliber40RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text=".40 S&amp;W" toggleGroup="$caliberToggleGroup" GridPane.rowIndex="1" />
+                                          <RadioButton fx:id="caliber45RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text=".45 ACP" toggleGroup="$caliberToggleGroup" GridPane.rowIndex="2" />
+                                          <RadioButton fx:id="caliber50RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text=".50" toggleGroup="$caliberToggleGroup" GridPane.rowIndex="3" />
+                                          <RadioButton fx:id="caliber300RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text="300 BLK" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <RadioButton fx:id="caliber4570RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text=".45-70" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <RadioButton fx:id="caliberSmallPistolRadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text="Small Pistol" toggleGroup="$caliberToggleGroup" GridPane.rowIndex="4" />
+                                          <RadioButton fx:id="caliberLargePistolRadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text="Large Pistol" toggleGroup="$caliberToggleGroup" GridPane.rowIndex="5" />
+                                          <RadioButton fx:id="caliber223RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text=".223" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" />
+                                          <RadioButton fx:id="caliber65RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text="6.5mm" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <RadioButton fx:id="caliber308RadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text=".308" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <RadioButton fx:id="caliberSmallRifleRadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text="Small Rifle" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <RadioButton fx:id="caliberLargeRifleRadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text="Large Rifle" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <RadioButton fx:id="caliberLongRifleRadioButton" mnemonicParsing="false" onAction="#setPlateSettings" text="Long Rifle" toggleGroup="$caliberToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" layoutX="651.0" layoutY="7.0" prefHeight="120.0" prefWidth="210.0" text="Orientation">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="207.0">
+                                 <children>
+                                    <GridPane layoutX="-43.0" prefHeight="70.0" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <RadioButton fx:id="baseUpRadioButton" mnemonicParsing="false" text="Base Up Brass Plate" GridPane.rowIndex="1">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="orientationToggleGroup" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="baseDownRadioButton" mnemonicParsing="false" text="Base Down Brass Plate" toggleGroup="$orientationToggleGroup" GridPane.rowIndex="2" />
+                                          <RadioButton fx:id="noseUpDownRadioButton" mnemonicParsing="false" selected="true" text="Nose Up/Down Bullet Plate" toggleGroup="$orientationToggleGroup" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" layoutX="8.0" layoutY="7.0" prefHeight="70.0" prefWidth="633.0" text="OpenSCAD Location">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="49.0" prefWidth="664.0">
+                                 <children>
+                                    <HBox prefHeight="42.0" prefWidth="613.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <TextField fx:id="openSCADPathTextField" prefHeight="25.0" prefWidth="508.0" />
+                                          <Button mnemonicParsing="false" onAction="#getNewFolderPath" prefHeight="25.0" prefWidth="70.0" text="Change" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </TitledPane>
+                        <VBox layoutX="651.0" layoutY="392.0" prefHeight="88.0" prefWidth="225.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="26.0" prefWidth="211.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="previewButton" mnemonicParsing="false" onAction="#getSTLFile" prefHeight="25.0" prefWidth="70.0" text="Preview" />
+                                    <Button fx:id="stlStartButton" mnemonicParsing="false" onAction="#getSTLFile" prefHeight="25.0" prefWidth="70.0" text="Generate" />
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Label fx:id="generateLabel1" text="Press Preview to view plate" textFill="#d11515">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ProgressIndicator fx:id="platesProgressBar" prefHeight="20.0" prefWidth="20.0" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="generateLabel2" prefHeight="17.0" prefWidth="235.0" text="Press Generate to create plate" textFill="#d11515">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
