@@ -42,6 +42,11 @@
 /*      */ import javafx.scene.media.MediaPlayer;
 /*      */ import javafx.stage.DirectoryChooser;
 /*      */ import javafx.stage.Stage;
+            import java.nio.file.Files;
+            import java.nio.file.Path;
+            import java.nio.file.Paths;
+            import java.util.stream.Stream;
+            import java.io.IOException;
 /*      */ 
 /*      */ public class PartsWindowController implements Initializable {
 /*   47 */   private final LinkedHashSet<Parts> PARTS = new LinkedHashSet<>();
@@ -1057,83 +1062,110 @@
 /* 1057 */     pdfFile.add((IBlockElement)table);
 /* 1058 */     pdfFile.close();
 /*      */   }
+
+            private Path findPartFile(Path projectRoot, Parts part) throws IOException {
+                String expectedPath = part.getPath()
+                    .replace('\\', '/')
+                    .replaceFirst("^/+", "");
+
+                String expectedName = Paths.get(expectedPath).getFileName().toString();
+
+                try (Stream<Path> files = Files.walk(projectRoot)) {
+                    // Prefer the original relative path, if it exists.
+                    Path directMatch = projectRoot.resolve(expectedPath);
+                    if (Files.isRegularFile(directMatch)) {
+                        return directMatch;
+                    }
+
+                    // Otherwise search recursively by filename.
+                    return files
+                        .filter(Files::isRegularFile)
+                        .filter(path -> path.getFileName().toString().equalsIgnoreCase(expectedName))
+                        .findFirst()
+                        .orElse(null);
+                }
+            }
 /*      */   
-/*      */   @FXML
-/*      */   private void getZIPFile() {
-/* 1063 */     this.PARTS.clear();
-/* 1064 */     getMainBodyParts();
-/* 1065 */     getMountParts();
-/* 1066 */     getCollatorPlateParts();
-/* 1067 */     getSlidePlateParts();
-/* 1068 */     getAdapterParts();
-/* 1069 */     getDropTubeParts();
-/* 1070 */     getBulletFeedDieParts();
-/* 1071 */     getAPPParts();
-/*      */     
-/* 1073 */     if (!this.PARTS.isEmpty()) {
-/* 1074 */       Task<Void> task = new Task<Void>()
-/*      */         {
-/*      */           public Void call() throws Exception {
-/* 1077 */             (new File(PartsWindowController.this.projectPathTextField.getText() + "/Parts.zip")).delete();
-/* 1078 */             ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(new File(PartsWindowController.this.projectPathTextField.getText() + "/Parts.zip")));
-/* 1079 */             int partNumber = 1;
-/*      */             
-/* 1081 */             PartsWindowController.this.zipStartButton.setDisable(true);
-/* 1082 */             for (Parts part : PartsWindowController.this.PARTS) {
-/*      */               FileInputStream stlFileStream;
-/* 1084 */               ZipEntry zipEntry = new ZipEntry(part.getPath().substring(1));
-/* 1085 */               byte[] bytes = new byte[1024];
-/*      */ 
-/*      */ 
-/*      */               
-/* 1089 */               if (partNumber == 1) {
-/* 1090 */                 PartsWindowController.this.getPDFFile();
-/* 1091 */                 FileInputStream zipFileStream = new FileInputStream(new File(PartsWindowController.this.projectPathTextField.getText() + "/Settings.pdf"));
-/* 1092 */                 zipOut.putNextEntry(new ZipEntry("Settings.pdf")); int i;
-/* 1093 */                 while ((i = zipFileStream.read(bytes)) >= 0) {
-/* 1094 */                   zipOut.write(bytes, 0, i);
-/*      */                 }
-/* 1096 */                 zipFileStream.close();
-/* 1097 */                 (new File(PartsWindowController.this.projectPathTextField.getText() + "/Settings.pdf")).delete();
-/*      */               } 
-/*      */               
-/*      */               try {
-/* 1101 */                 stlFileStream = new FileInputStream(new File(PartsWindowController.this.projectPathTextField.getText() + part.getPath()));
-/* 1102 */               } catch (Exception exception) {
-/* 1103 */                 partNumber++;
-/* 1104 */                 updateProgress(partNumber, PartsWindowController.this.PARTS.size());
-/* 1105 */                 updateMessage("File Not Found: " + part.getFile() + " - " + Math.round(partNumber / PartsWindowController.this.PARTS.size() * 100.0D) + "%");
-/*      */                 
-/*      */                 continue;
-/*      */               } 
-/* 1109 */               zipOut.putNextEntry(zipEntry); int length;
-/* 1110 */               while ((length = stlFileStream.read(bytes)) >= 0) {
-/* 1111 */                 zipOut.write(bytes, 0, length);
-/*      */               }
-/*      */               
-/* 1114 */               updateProgress(partNumber, PartsWindowController.this.PARTS.size());
-/* 1115 */               updateMessage("Adding: " + part.getFile() + " - " + Math.round(partNumber / PartsWindowController.this.PARTS.size() * 100.0D) + "%");
-/* 1116 */               partNumber++;
-/* 1117 */               stlFileStream.close();
-/* 1118 */               Thread.sleep(100L);
-/*      */             } 
-/* 1120 */             zipOut.close();
-/* 1121 */             updateMessage("Done!");
-/* 1122 */             (new MediaPlayer(new Media(PartsWindowController.class.getResource("ding.mp3").toString()))).play();
-/* 1123 */             Platform.runLater(() -> PartsWindowController.this.zipStartButton.setDisable(false));
-/*      */ 
-/*      */             
-/* 1126 */             return null;
-/*      */           }
-/*      */         };
-/* 1129 */       task.messageProperty().addListener((observable, oldValue, newValue) -> this.progressLabel.setText(newValue));
-/*      */ 
-/*      */       
-/* 1132 */       this.partsProgressBar.progressProperty().bind((ObservableValue)task.progressProperty());
-/* 1133 */       Thread thread = new Thread((Runnable)task);
-/* 1134 */       thread.setDaemon(true);
-/* 1135 */       thread.start();
-/*      */     }  } @FXML private void getSTLFile(ActionEvent event) { try {
+@FXML
+private void getZIPFile() {
+        this.PARTS.clear();
+
+        getMainBodyParts();
+        getMountParts();
+        getCollatorPlateParts();
+        getSlidePlateParts();
+        getAdapterParts();
+        getDropTubeParts();
+        getBulletFeedDieParts();
+        getAPPParts();
+
+        if (this.PARTS.isEmpty()) {
+            this.progressLabel.setText("No parts selected.");
+            return;
+        }
+    Task<Void> task = new Task<>() {
+        @Override
+        protected Void call() throws Exception {
+            Path projectRoot = Paths.get(
+                PartsWindowController.this.projectPathTextField.getText()
+            ).toAbsolutePath().normalize();
+
+            Path zipPath = projectRoot.resolve("Parts.zip");
+
+            PartsWindowController.this.getPDFFile();
+
+            try (ZipOutputStream zipOut = new ZipOutputStream(
+                    new FileOutputStream(zipPath.toFile()))) {
+
+                Path settingsPath = projectRoot.resolve("Settings.pdf");
+
+                try (FileInputStream input =
+                         new FileInputStream(settingsPath.toFile())) {
+                    zipOut.putNextEntry(new ZipEntry("Settings.pdf"));
+                    input.transferTo(zipOut);
+                    zipOut.closeEntry();
+                }
+
+                Files.deleteIfExists(settingsPath);
+
+                int number = 1;
+                int total = PartsWindowController.this.PARTS.size();
+
+                for (Parts part : PartsWindowController.this.PARTS) {
+                    Path partPath = findPartFile(projectRoot, part);
+
+                    if (partPath == null) {
+                        updateMessage("File Not Found: " + part.getFile());
+                        number++;
+                        continue;
+                    }
+
+                    zipOut.putNextEntry(new ZipEntry(
+                        projectRoot.relativize(partPath)
+                            .toString()
+                            .replace(File.separatorChar, '/')
+                    ));
+
+                    Files.copy(partPath, zipOut);
+                    zipOut.closeEntry();
+
+                    updateProgress(number++, total);
+                    updateMessage("Adding: " + part.getFile());
+                }
+            }
+
+            updateMessage("Done!");
+            return null;
+        }
+    };
+
+    partsProgressBar.progressProperty().bind(task.progressProperty());
+    progressLabel.textProperty().bind(task.messageProperty());
+
+    Thread thread = new Thread(task);
+    thread.setDaemon(true);
+    thread.start();
+/*      */       } @FXML private void getSTLFile(ActionEvent event) { try {
 /*      */       final LinkedList<String> command; Task<Void> task;
 /*      */       Thread thread;
 /*      */       FXMLLoader loader;
