@@ -1,0 +1,61 @@
+#!/bin/bash
+# filepath: /Users/shanelupton/Downloads/Parts Generator.jar.src/build
+
+set -euo pipefail
+
+PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+APP_NAME="Parts Generator"
+OS="$(uname -s)"
+
+case "$OS" in
+  Darwin)
+    PACKAGE_TYPE="app-image"
+    ;;
+
+  MINGW*|MSYS*|CYGWIN*)
+    PACKAGE_TYPE="exe"
+    ;;
+
+  Linux)
+    PACKAGE_TYPE="deb"
+    ;;
+
+  *)
+    echo "Unsupported platform: $OS"
+    exit 1
+    ;;
+esac
+
+cd "$PROJECT_DIR"
+
+rm -rf target/app dist
+mkdir -p target/app dist
+
+mvn clean package dependency:copy-dependencies \
+  -DincludeScope=runtime \
+  -DoutputDirectory=target/app
+
+MAIN_JAR="$(find target -maxdepth 1 -type f \
+  -name 'bf556-parts-generator-*.jar' \
+  ! -name '*with-dependencies*' | head -n 1)"
+
+if [[ -z "$MAIN_JAR" ]]; then
+  echo "Main JAR was not found."
+  exit 1
+fi
+
+cp "$MAIN_JAR" target/app/
+MAIN_JAR_NAME="$(basename "$MAIN_JAR")"
+
+jpackage \
+  --type "$PACKAGE_TYPE" \
+  --name "$APP_NAME" \
+  --input target/app \
+  --main-jar "$MAIN_JAR_NAME" \
+  --main-class partsgenerator.Main \
+  --module-path target/app \
+  --add-modules javafx.controls,javafx.fxml,javafx.media \
+  --dest dist \
+  --java-options "--enable-native-access=javafx.graphics,javafx.media"
+
+echo "Build complete for $OS: dist/"
