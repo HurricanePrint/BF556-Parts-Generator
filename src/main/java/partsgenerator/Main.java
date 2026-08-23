@@ -11,8 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(
-            Main.class.getResource("/partsgenerator/PartsWindow.fxml")
-        );
+                Main.class.getResource("/partsgenerator/PartsWindow.fxml"));
 
         Parent root = loader.load();
 
