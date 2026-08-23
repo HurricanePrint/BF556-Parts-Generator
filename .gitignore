@@ -4,6 +4,9 @@ target/
 # Compiled Java files
 *.class
 
+# distribution / packaging
+dist/
+
 # macOS
 .DS_Store
 
