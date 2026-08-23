@@ -13,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -344,28 +346,52 @@ public class PartsWindowController implements Initializable {
   private CheckBox app300BrassCheckBox;
 
   private Path getApplicationFolder() {
+    List<Path> candidates = new ArrayList<>();
+
+    candidates.add(Paths.get(System.getProperty("user.dir")));
+
     try {
-      Path jarPath = Paths.get(
+      Path location = Paths.get(
           Main.class.getProtectionDomain()
               .getCodeSource()
               .getLocation()
               .toURI());
 
-      // Development: target/classes
-      // Packaged app: Parts Generator.app/Contents/app
-      Path folder = Files.isRegularFile(jarPath)
-          ? jarPath.getParent()
-          : jarPath;
+      candidates.add(Files.isRegularFile(location)
+          ? location.getParent()
+          : location);
+    } catch (Exception ignored) {
 
-      Path appBundle = folder
-          .getParent() // Contents
-          .getParent(); // Parts Generator.app
-
-      return appBundle.getParent().toAbsolutePath().normalize();
-    } catch (Exception e) {
-      return Paths.get(System.getProperty("user.home"))
-          .toAbsolutePath().normalize();
     }
+
+    try {
+      Path command = Paths.get(
+          ProcessHandle.current()
+              .info()
+              .command()
+              .orElse(""));
+
+      if (Files.isRegularFile(command)) {
+        candidates.add(command.getParent());
+      }
+    } catch (Exception ignored) {
+
+    }
+
+    for (Path candidate : candidates) {
+      Path current = candidate.toAbsolutePath().normalize();
+
+      while (current != null) {
+        if (Files.isDirectory(current.resolve("1. Main Body"))) {
+          return current;
+        }
+        current = current.getParent();
+      }
+    }
+
+    return Paths.get(System.getProperty("user.dir"))
+        .toAbsolutePath()
+        .normalize();
   }
 
   public void initialize(URL url, ResourceBundle rb) {
