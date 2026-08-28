@@ -1,6 +1,6 @@
 # Parts Generator
 
-This repository contains the source code for the Parts Generator application included with the BF556 Feeder project. It replaces the original Java application, which had compatibility and dependency issues with newer Java versions. The application targets JDK 25 and supports platform-specific packages that include their own Java runtime, so end users do not need to install Java or Maven.
+This repository contains the source code for the Parts Generator application included with the BF556 Feeder project. It replaces the original Java application, which had compatibility and dependency issues with newer Java versions. The application targets JDK 25 and supports platform-specific packages that include their own Java runtime, so end users do not need to install Java, JavaFX or Maven.
 
 ## Requirements
 
